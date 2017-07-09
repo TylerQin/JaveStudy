@@ -17,6 +17,7 @@ public class App
     	{
     		desrilizable();
 	    	testRefactor();
+	    	getProperty();
     	}
     	catch(Exception exception)
     	{
@@ -26,6 +27,13 @@ public class App
 			System.out.println("finally");
 		}
     }
+
+	private static void getProperty() {
+		String filePath = App.class.getResource("/").getPath()+"Study/Property/TestProperties.properties";
+		ResourceLoader.getProperties(filePath.substring(1).replace("/", "\\"));
+		String value = ResourceLoader.getValue("AppID");
+		System.out.println(value);
+	}
 
 	private static void testRefactor() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		Class<?> testPorperty = Class.forName("Study.Property.TestProperty");
